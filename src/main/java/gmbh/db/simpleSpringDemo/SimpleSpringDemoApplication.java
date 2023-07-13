@@ -8,9 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SimpleSpringDemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SimpleSpringDemoApplication.class, args)
-				.getBean(Doctor.class)
-				.assist();
+		SpringApplication.run(SimpleSpringDemoApplication.class, args);
 	}
 
 }
