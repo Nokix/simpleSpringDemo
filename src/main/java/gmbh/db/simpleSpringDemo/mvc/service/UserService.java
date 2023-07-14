@@ -3,7 +3,6 @@ package gmbh.db.simpleSpringDemo.mvc.service;
 import com.github.javafaker.Faker;
 import gmbh.db.simpleSpringDemo.mvc.entity.User;
 import gmbh.db.simpleSpringDemo.mvc.repository.UserRepo;
-import gmbh.db.simpleSpringDemo.mvc.repository.UserRepoLocal;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 @Service
 public class UserService {
@@ -26,7 +24,7 @@ public class UserService {
     }
 
     @Transactional
-    public List<User> saveRandomNewUser(int amount) {
+    public List<User> saveRandomNewUsers(int amount) {
         List<User> list = new ArrayList<>();
         for (int value = 0; value < amount; value++) {
             User user = new User(faker.name().firstName());
@@ -42,5 +40,9 @@ public class UserService {
 
     public List<User> getUsersByName(String name) {
         return userRepo.findByName(name);
+    }
+
+    public User saveUser(User user) {
+        return userRepo.save(user);
     }
 }
